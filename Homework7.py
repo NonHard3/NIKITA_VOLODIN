@@ -4,7 +4,7 @@ try:
     num2 = float(input("Введите второе число: "))
     result = num1 + num2
 except ValueError:
-    print("Пользователь ввёл нечисловое значение")
+    print("Пользователь ввёл нечисловое значение\n")
 else:
     print(f"Результат сложения: {result}\n")
 
@@ -14,7 +14,7 @@ try:
     num2 = float(input("Введите второе число: "))
     result = num1 - num2
 except ValueError:
-    print("Пользователь ввёл нечисловое значение")
+    print("Пользователь ввёл нечисловое значение\n")
 else:
     print(f"Результат вычитания: {result}\n")
 
@@ -24,7 +24,7 @@ try:
     num2 = float(input("Введите второе число: "))
     result = num1 * num2
 except ValueError:
-    print("Пользователь ввёл нечисловое значение")
+    print("Пользователь ввёл нечисловое значение\n")
 else:
     print(f"Результат умножения: {result}\n")
 
@@ -34,8 +34,8 @@ try:
     num2 = float(input("Введите второе число: "))
     result = num1 / num2
 except ValueError:
-    print("Пользователь ввёл нечисловое значение")
+    print("Пользователь ввёл нечисловое значение\n")
 except ZeroDivisionError:
-    print("Делитель не должен быть равным нулю")
+    print("Делитель не должен быть равным нулю\n")
 else:
     print(f"Результат деления: {result}\n")
