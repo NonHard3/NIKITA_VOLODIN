@@ -1,7 +1,7 @@
 def get_length_and_type(example):
     try:
         print(f"Тип данных: {type(example)}, длина объекта: {len(example)}\n")
-    except:
+    except TypeError:
         print(f"Для типа данных {type(example)} функция len не работает\n")
 
 
