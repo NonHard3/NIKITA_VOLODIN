@@ -1,3 +1,10 @@
+def get_length_and_type(example):
+    try:
+        print(f"Тип данных: {type(example)}, длина объекта: {len(example)}\n")
+    except:
+        print(f"Для типа данных {type(example)} функция len не работает\n")
+
+
 int_type = 123
 float_type = 123.45
 string_type = "987"
@@ -5,15 +12,6 @@ list_type = [1, 2, 3, 45]
 tuple_type = (1, 2, 3, 12, 435, 2)
 dict_type = {"first_name": "Nikita", "last_name": "Volodin", "age": 28}
 set_type = {1, 2}
-
-
-def get_length_and_type(example):
-    try:
-        print(len(example))
-    except:
-        print("Для данного типа данных функция len не работает")
-    print(type(example))
-
 
 get_length_and_type(int_type)
 get_length_and_type(float_type)
