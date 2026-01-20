@@ -18,6 +18,8 @@ def test_max_number():
     print("Тесты пройдены")
 
 
+empty_function()
+
 for x in even_numbers(11):
     print(x)
 
