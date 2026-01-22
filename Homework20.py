@@ -1,11 +1,13 @@
 def input_number():
-    try:
-        number = int(input("Введите число для обратного отсчета: "))
-    except ValueError:
-        print("Введено нечисловое значение! Попробуйте ещё раз")
-        input_number()
-    else:
-        start_countdown(number)
+    while True:
+        try:
+            number = int(input("Введите число для обратного отсчета: "))
+        except ValueError:
+            print("Введено нечисловое значение! Попробуйте ещё раз")
+        else:
+            break
+
+    start_countdown(number)
 
 
 def start_countdown(number):
