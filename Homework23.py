@@ -17,6 +17,7 @@ while True:
     if user_number >= 0:
         count_number += 1
     else:
+        print("Вы ввели отрицательное число. Цикл завершен\n")
         break
 
 print(f"Сумма четных чисел от 1 до 100: {sum_number}")
