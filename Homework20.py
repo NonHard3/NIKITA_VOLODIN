@@ -16,5 +16,5 @@ def start_countdown(number):
         number -= 1
 
 
-input_user = input_number()
-start_countdown(input_user)
+number_from_user = input_number()
+start_countdown(number_from_user)
