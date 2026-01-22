@@ -7,7 +7,7 @@ def input_number():
         else:
             break
 
-    start_countdown(number)
+    return number
 
 
 def start_countdown(number):
@@ -16,4 +16,5 @@ def start_countdown(number):
         number -= 1
 
 
-input_number()
+input_user = input_number()
+start_countdown(input_user)
