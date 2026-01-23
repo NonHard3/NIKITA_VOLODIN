@@ -1,47 +1,39 @@
 import string
 
-def erase_punctuation(input_text):
-    cleaned_text = ""
-    for char in input_text:
-        if char in string.punctuation:
-            continue
-        else:
-            cleaned_text += char
-    return cleaned_text
 
-def weqw():
-    pass
+def set_lower_style_and_erase_punctuation(input_text):
+    input_text = input_text.lower()
+    for ch in input_text:
+        if ch in string.punctuation:
+            input_text = input_text.replace(ch, "")
+    return input_text
+
+
+def count_word_repetitions(word, dict):
+    if word in dict:
+        dict[word] += 1
+    else:
+        dict[word] = 1
+
 
 word_count = 0
 longest_word = ""
 vowel_count = 0
 
 dict_words = {}
-max_char_in_word = 0
 
-text = input("Введите текст:\n")
+text = set_lower_style_and_erase_punctuation(input("Введите текст:\n"))
 
-for word in text.split(" "):
-    char_count = 0
-    current_word = ""
+for word in text:
 
-    for char in word.lower():
-        if char in string.punctuation:
-            continue
+    for char in word():
         if char in "аеёиоуыэюя":
             vowel_count += 1
 
-        current_word += char
-        char_count += 1
+    count_word_repetitions(word, dict_words)
 
-    if current_word in dict_words:
-        dict_words[current_word] += 1
-    else:
-        dict_words[current_word] = 1
-
-    if char_count > max_char_in_word:
-        longest_word = current_word
-        max_char_in_word = char_count
+    if len(word) > len(longest_word):
+        longest_word = word
 
     word_count += 1
 
