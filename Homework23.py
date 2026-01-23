@@ -13,13 +13,11 @@ while True:
         user_number = int(input("Введите число: "))
     except ValueError:
         print("Введено нечисловое значение! Попробуйте ещё раз")
-
-    if user_number >= 0:
-        count_number += 1
     else:
-        print("Вы ввели отрицательное число. Цикл завершен\n")
         count_number += 1
-        break
+        if user_number < 0:
+            print("Вы ввели отрицательное число. Цикл завершен\n")
+            break
 
 print(f"Сумма четных чисел от 1 до 100: {sum_number}")
 print(f"Список квадратов нечетных чисел от 1 до 10: {squares}")

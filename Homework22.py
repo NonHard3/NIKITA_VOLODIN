@@ -1,5 +1,17 @@
 import string
 
+def erase_punctuation(input_text):
+    cleaned_text = ""
+    for char in input_text:
+        if char in string.punctuation:
+            continue
+        else:
+            cleaned_text += char
+    return cleaned_text
+
+def weqw():
+    pass
+
 word_count = 0
 longest_word = ""
 vowel_count = 0
