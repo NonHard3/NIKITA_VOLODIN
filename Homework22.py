@@ -9,45 +9,46 @@ def set_lower_style_and_erase_punctuation(input_text):
     return input_text
 
 
-def find_longest_word(current_word, max_longest_word):
-    if len(current_word) > len(max_longest_word):
-        return current_word
-    else:
-        return max_longest_word
+def count_words(input_text):
+    print(f"Количество слов в тексте: {len(input_text.split(" "))}")
 
 
-def count_word_repetitions(current_word, dict_type):
-    if current_word in dict_type:
-        dict_type[current_word] += 1
-    else:
-        dict_type[current_word] = 1
+def find_longest_word(input_text):
+    longest_word = ""
+    for word in input_text:
+        if len(word) > len(longest_word):
+            longest_word = word
+
+    print(f"Самое длинное слово: {longest_word}")
 
 
-def count_vowel(input_text, count):
+def count_vowel(input_text):
+    vowel_count = 0
     for ch in input_text:
         if ch in "аеёиоуыэюя":
-            count += 1
+            vowel_count += 1
+
+    print(f"Количество гласных в тексте: {vowel_count}")
+
+
+def count_word_repetitions(input_text):
+    dict_words = {}
+    for word in input_text:
+        if word in dict_words:
+            dict_words[word] += 1
+        else:
+            dict_words[word] = 1
+
+    print("Количество повторений каждого слова:")
+    for key, value in dict_words.items():
+        print(f"{key}: {value}")
 
 
 def analyze_the_text(input_text):
-    longest_word = ""
-    vowel_count = 0
-    dict_words = {}
-
-    for word in input_text.split(" "):
-        count_word_repetitions(word, dict_words)
-
-        longest_word = find_longest_word(word, longest_word)
-
-    count_vowel(input_text, vowel_count)
-
-    print(f"Количество слов в тексте: {len(input_text.split(" "))}")
-    print(f"Самое длинное слово: {longest_word}")
-    print(f"Количество гласных в тексте: {vowel_count}")
-    print("Количество повторений каждого слова:")
-
-    for key, value in dict_words.items():
-        print(f"{key}: {value}")
+    count_words(input_text)
+    find_longest_word(input_text.split(" "))
+    count_vowel(input_text)
+    count_word_repetitions(input_text.split(" "))
 
 
 user_text = set_lower_style_and_erase_punctuation(input("Введите текст:\n"))
