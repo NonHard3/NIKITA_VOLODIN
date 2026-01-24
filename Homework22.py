@@ -23,26 +23,25 @@ def count_word_repetitions(current_word, dict_type):
         dict_type[current_word] = 1
 
 
-def analyze_the_text():
-    word_count = 0
+def count_vowel(input_text, count):
+    for ch in input_text:
+        if ch in "аеёиоуыэюя":
+            count += 1
+
+
+def analyze_the_text(input_text):
     longest_word = ""
     vowel_count = 0
     dict_words = {}
 
-    text = set_lower_style_and_erase_punctuation(input("Введите текст:\n"))
-
-    for word in text.split(" "):
+    for word in input_text.split(" "):
         count_word_repetitions(word, dict_words)
 
         longest_word = find_longest_word(word, longest_word)
 
-        word_count += 1
+    count_vowel(input_text, vowel_count)
 
-    for char in text:
-        if char in "аеёиоуыэюя":
-            vowel_count += 1
-
-    print(f"Количество слов в тексте: {word_count}")
+    print(f"Количество слов в тексте: {len(input_text.split(" "))}")
     print(f"Самое длинное слово: {longest_word}")
     print(f"Количество гласных в тексте: {vowel_count}")
     print("Количество повторений каждого слова:")
@@ -51,4 +50,6 @@ def analyze_the_text():
         print(f"{key}: {value}")
 
 
-analyze_the_text()
+user_text = set_lower_style_and_erase_punctuation(input("Введите текст:\n"))
+
+analyze_the_text(user_text)
