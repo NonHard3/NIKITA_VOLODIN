@@ -26,7 +26,6 @@ def count_word_repetitions(current_word, dict_type):
 word_count = 0
 longest_word = ""
 vowel_count = 0
-
 dict_words = {}
 
 text = set_lower_style_and_erase_punctuation(input("Введите текст:\n"))
