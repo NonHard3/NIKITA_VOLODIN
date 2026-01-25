@@ -17,6 +17,13 @@ def input_grade(message):
             print("Неверное значение!")
 
 
+def check_len(function, input_list):
+    if len(input_list) > 0:
+        function(input_list)
+    else:
+        print("\nСписок учеников пуст")
+
+
 def calculate_average(grades):
     return sum(grades) / len(grades)
 
@@ -28,23 +35,25 @@ def determine_successful_or_not(average_grade):
 
 def print_info_about_students(list_students):
     for student in list_students:
-        print(f"""Студент: {student['name']}
+        print(
+            f"""\nСтудент: {student['name']}
 Средний балл: {calculate_average(student['grades']):.2f}
-Статус: {determine_successful_or_not(calculate_average(student['grades']))}\n""")
+Статус: {"Успешен" if (calculate_average(student['grades'])) >= 75 else "Отстающий"}"""
+        )
 
 
 def calculate_average_all_students(list_students):
     sum_grades = [calculate_average(student['grades']) for student in list_students]
-    print(f"Общий средний балл: {(sum(sum_grades) / len(list_students)):.2f}\n")
+    print(f"\nОбщий средний балл: {(sum(sum_grades) / len(list_students)):.2f}")
 
 
 def add_new_student(list_students):
-    dict_student = {'name': input("Введите имя нового студента: "), 'grades': []}
+    dict_student = {'name': input("\nВведите имя нового студента: "), 'grades': []}
     for i in range(input_number("Введите количество оценок: ")):
         dict_student['grades'].append(input_grade("Введите оценку: "))
     list_students.append(dict_student)
     print(
-        f"Добавлен студент {dict_student.get('name')} со средним баллом {calculate_average(dict_student['grades']):.2f}\n")
+        f"\nДобавлен студент {dict_student.get('name')} со средним баллом {calculate_average(dict_student['grades']):.2f}")
     calculate_average_all_students(list_students)
 
 
@@ -58,9 +67,34 @@ def remove_worst_student(list_students):
             grades_worst = current_grade
 
     print(
-        f"Студент {list_students[index_student].get('name')} со средним баллом {grades_worst:.2f} удален из списка студентов\n")
+        f"\nСтудент {list_students[index_student].get('name')} со средним баллом {grades_worst:.2f} удален из списка студентов")
     list_students.pop(index_student)
-    calculate_average_all_students(list_students)
+    check_len(calculate_average_all_students, list_students)
+
+
+def launch_menu(list_students):
+    while True:
+        print(
+            """\nСписок команд:
+1.Информация об учениках
+2.Показать средний балл
+3.Добавить нового студента
+4.Убрать худшего студента
+5.Завершить работу"""
+        )
+        input_user = input("\nВаш выбор: ")
+        if input_user == "1":
+            check_len(print_info_about_students, list_students)
+        elif input_user == "2":
+            check_len(calculate_average_all_students, list_students)
+        elif input_user == "3":
+            add_new_student(list_students)
+        elif input_user == "4":
+            check_len(remove_worst_student, list_students)
+        elif input_user == "5":
+            break
+        else:
+            print("\nНеверная команда")
 
 
 students = [
@@ -70,8 +104,4 @@ students = [
     {"name": "Draco", "grades": [60, 75, 70]}
 ]
 
-print_info_about_students(students)
-calculate_average_all_students(students)
-add_new_student(students)
-remove_worst_student(students)
-print_info_about_students(students)
+launch_menu(students)
