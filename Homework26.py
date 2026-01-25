@@ -44,7 +44,7 @@ def add_new_student(list_students):
     for i in range(3):
         dict_student['grades'].append(input_number(''))
     list_students.append(dict_student)
-    print()
+    print(f"Добавлен студент {dict_student.get('name')} со средним баллом {calculate_average(dict_student['grades']):.2f}\n")
     calculate_average_all_students(list_students)
 
 
@@ -74,3 +74,4 @@ print_info_about_students(students)
 calculate_average_all_students(students)
 add_new_student(students)
 remove_worst_student(students)
+print_info_about_students(students)
