@@ -8,43 +8,43 @@ def input_number(message):
             return user_number
 
 
-def calculate_average(grades):
-    sum_grades = 0
-    for i in range(len(grades)):
-        sum_grades += grades[i]
+def input_grade(message):
+    while True:
+        user_grade = input_number(message)
+        if 0 <= user_grade <= 100:
+            return user_grade
+        else:
+            print("Неверное значение!")
 
-    return sum_grades / len(grades)
+
+def calculate_average(grades):
+    return sum(grades) / len(grades)
 
 
 def determine_successful_or_not(average_grade):
-    if average_grade >= 75:
-        return "Успешен"
-    else:
-        return "Отстающий"
+    result = "Успешен" if average_grade >= 75 else "Отстающий"
+    return result
 
 
 def print_info_about_students(list_students):
     for student in list_students:
-        print(f"Студент: {student['name']}")
-        print(f"Средний балл: {calculate_average(student['grades']):.2f}")
-        print(f"Статус: {determine_successful_or_not(calculate_average(student['grades']))}\n")
+        print(f"""Студент: {student['name']}
+Средний балл: {calculate_average(student['grades']):.2f}
+Статус: {determine_successful_or_not(calculate_average(student['grades']))}\n""")
 
 
 def calculate_average_all_students(list_students):
-    sum_grades = 0
-    for student in list_students:
-        sum_grades += calculate_average(student['grades'])
-
-    print(f"Общий средний балл: {(sum_grades / len(list_students)):.2f}\n")
+    sum_grades = [calculate_average(student['grades']) for student in list_students]
+    print(f"Общий средний балл: {(sum(sum_grades) / len(list_students)):.2f}\n")
 
 
 def add_new_student(list_students):
     dict_student = {'name': input("Введите имя нового студента: "), 'grades': []}
-    print("Введите оценки студента: ")
-    for i in range(3):
-        dict_student['grades'].append(input_number(''))
+    for i in range(input_number("Введите количество оценок: ")):
+        dict_student['grades'].append(input_grade("Введите оценку: "))
     list_students.append(dict_student)
-    print(f"Добавлен студент {dict_student.get('name')} со средним баллом {calculate_average(dict_student['grades']):.2f}\n")
+    print(
+        f"Добавлен студент {dict_student.get('name')} со средним баллом {calculate_average(dict_student['grades']):.2f}\n")
     calculate_average_all_students(list_students)
 
 
