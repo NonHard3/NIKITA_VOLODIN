@@ -28,11 +28,6 @@ def calculate_average(grades):
     return sum(grades) / len(grades)
 
 
-def determine_successful_or_not(average_grade):
-    result = "Успешен" if average_grade >= 75 else "Отстающий"
-    return result
-
-
 def print_info_about_students(list_students):
     for student in list_students:
         print(
