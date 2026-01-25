@@ -62,6 +62,7 @@ def remove_worst_student(list_students):
     list_students.pop(index_student)
     calculate_average_all_students(list_students)
 
+
 students = [
     {"name": "Harry", "grades": [80, 90, 78]},
     {"name": "Hermione", "grades": [95, 90, 97]},
