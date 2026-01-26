@@ -25,7 +25,15 @@ def check_len(function, input_list):
 
 
 def calculate_average(grades):
-    return sum(grades) / len(grades)
+    try:
+        return sum(grades) / len(grades)
+    except ZeroDivisionError:
+        return 0
+
+
+def calculate_average_all_students(list_students):
+    sum_grades = [calculate_average(student['grades']) for student in list_students]
+    print(f"\nОбщий средний балл: {(sum(sum_grades) / len(list_students)):.2f}")
 
 
 def print_info_about_students(list_students):
@@ -35,11 +43,6 @@ def print_info_about_students(list_students):
 Средний балл: {calculate_average(student['grades']):.2f}
 Статус: {"Успешен" if (calculate_average(student['grades'])) >= 75 else "Отстающий"}"""
         )
-
-
-def calculate_average_all_students(list_students):
-    sum_grades = [calculate_average(student['grades']) for student in list_students]
-    print(f"\nОбщий средний балл: {(sum(sum_grades) / len(list_students)):.2f}")
 
 
 def add_new_student(list_students):
@@ -92,6 +95,31 @@ def launch_menu(list_students):
             print("\nНеверная команда")
 
 
+def launch_menu_2(list_students):
+    dict_menu = {
+        '1': lambda: check_len(print_info_about_students, list_students),
+        '2': lambda: check_len(calculate_average_all_students, list_students),
+        '3': lambda: add_new_student(list_students),
+        '4': lambda: check_len(remove_worst_student, list_students)
+    }
+    while True:
+        print(
+            """\nСписок команд:
+1.Информация об учениках
+2.Показать средний балл
+3.Добавить нового студента
+4.Убрать худшего студента
+5.Завершить работу"""
+        )
+        input_user = input("\nВаш выбор: ")
+        if input_user in dict_menu:
+            dict_menu[input_user]()
+        elif input_user == "5":
+            break
+        else:
+            print("\nНеверная команда")
+
+
 students = [
     {"name": "Harry", "grades": [80, 90, 78]},
     {"name": "Hermione", "grades": [95, 90, 97]},
@@ -99,4 +127,4 @@ students = [
     {"name": "Draco", "grades": [60, 75, 70]}
 ]
 
-launch_menu(students)
+launch_menu_2(students)
