@@ -8,11 +8,11 @@ def book_list_view(dict_library):
 
 
 library = {
-    'Скотный двор': {'author': '', 'year': '', 'is_availability': ''},
-    '1984': {'author': '', 'year': '', 'is_availability': ''},
-    'Мартин Иден': {'author': '', 'year': '', 'is_availability': ''},
-    'Сталкер. Тени Чернобыля': {'author': '', 'year': '', 'is_availability': ''},
-    'Теория игр': {'author': '', 'year': '', 'is_availability': ''},
+    'Скотный двор': {'author': 'Джордж Оруэлл', 'year': 2001, 'is_availability': False},
+    '1984': {'author': 'Джордж Оруэлл', 'year': 1995, 'is_availability': True},
+    'Мартин Иден': {'author': 'Джек Лондон', 'year': 2010, 'is_availability': True},
+    '451 градус по Фаренгейту': {'author': 'Рэй Брэдбери', 'year': 2005, 'is_availability': True},
+    'Оно': {'author': 'Стивен Кинг', 'year': 1990, 'is_availability': False},
 }
 library_1 = {}
 
