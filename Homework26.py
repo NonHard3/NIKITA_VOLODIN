@@ -72,23 +72,19 @@ def remove_worst_student(list_students):
 
 def launch_menu(list_students):
     dict_menu = {
-        '1': lambda: check_len(print_info_about_students, list_students),
-        '2': lambda: check_len(calculate_average_all_students, list_students),
-        '3': lambda: add_new_student(list_students),
-        '4': lambda: check_len(remove_worst_student, list_students)
+        '1': ["Информация об учениках", lambda: check_len(print_info_about_students, list_students)],
+        '2': ["Показать средний балл", lambda: check_len(calculate_average_all_students, list_students)],
+        '3': ["Добавить нового студента", lambda: add_new_student(list_students)],
+        '4': ["Убрать худшего студента", lambda: check_len(remove_worst_student, list_students)],
+        '5': ["Завершить работу", ]
     }
     while True:
-        print(
-            """\nСписок команд:
-1.Информация об учениках
-2.Показать средний балл
-3.Добавить нового студента
-4.Убрать худшего студента
-5.Завершить работу"""
-        )
+        print("\nСписок команд: ")
+        for key, value in dict_menu.items():
+            print(f"{key}.{value[0]}")
         input_user = input("\nВаш выбор: ")
-        if input_user in dict_menu:
-            dict_menu[input_user]()
+        if input_user in dict_menu and input_user != "5":
+            dict_menu[input_user][1]()
         elif input_user == "5":
             break
         else:
