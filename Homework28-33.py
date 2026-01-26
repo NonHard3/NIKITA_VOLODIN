@@ -1,10 +1,11 @@
 def book_list_view(dict_library):
-    if len(dict_library) > 0:
+    if not dict_library:
+        print("Библиотека пуста")
+        return
+    else:
         print("Список книг: ")
         for key in dict_library:
             print(key)
-    else:
-        print("Библиотека пуста")
 
 
 library = {
