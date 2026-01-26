@@ -71,31 +71,6 @@ def remove_worst_student(list_students):
 
 
 def launch_menu(list_students):
-    while True:
-        print(
-            """\nСписок команд:
-1.Информация об учениках
-2.Показать средний балл
-3.Добавить нового студента
-4.Убрать худшего студента
-5.Завершить работу"""
-        )
-        input_user = input("\nВаш выбор: ")
-        if input_user == "1":
-            check_len(print_info_about_students, list_students)
-        elif input_user == "2":
-            check_len(calculate_average_all_students, list_students)
-        elif input_user == "3":
-            add_new_student(list_students)
-        elif input_user == "4":
-            check_len(remove_worst_student, list_students)
-        elif input_user == "5":
-            break
-        else:
-            print("\nНеверная команда")
-
-
-def launch_menu_2(list_students):
     dict_menu = {
         '1': lambda: check_len(print_info_about_students, list_students),
         '2': lambda: check_len(calculate_average_all_students, list_students),
@@ -127,4 +102,4 @@ students = [
     {"name": "Draco", "grades": [60, 75, 70]}
 ]
 
-launch_menu_2(students)
+launch_menu(students)
