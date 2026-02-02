@@ -34,20 +34,26 @@ def book_list_view(dict_library):
             print(key)
 
 
-def add_book(title, author, year):
-    global library
-    if title not in library:
-        library[title] = dict(author=author, year=year, is_availability=None)
-        print("\nКнига добавлена в библиотеку")
+def add_book(dict_library, title, author, year):
+    if title not in dict_library:
+        dict_library[title] = dict(author=author, year=year, is_availability=None)
+        print(f"\nКнига '{title}' добавлена в библиотеку")
     else:
         print("\nДанная книга уже есть в библиотеке")
         agreement = input_agreement("Обновить информацию о книге? (Да/Нет): ")
         if agreement:
-            library[title]['author'] = author
-            library[title]['year'] = year
+            dict_library[title]['author'] = author
+            dict_library[title]['year'] = year
             print("Информация обновлена")
         else:
             return
+
+def remove_book(dict_library, title):
+    if title in dict_library:
+        del dict_library[title]
+        print(f"\nКнига '{title}' удалена из библиотеки")
+    else:
+        print(f"\nКнига '{title}' не найдена в библиотеке")
 
 
 library = {
@@ -60,8 +66,8 @@ library = {
 
 book_list_view(library)
 
-add_book("Мгла", "Стивен Кинг", 2001)
-add_book("Мартин Иден", "Jack London", 1955)
-add_book(input("\nВведите название книги: "), input("Введите автора: "), input_year("Введите год издания: "))
+remove_book(library, "Скотный двор")
+remove_book(library, "Скотный двор")
 
 book_list_view(library)
+
