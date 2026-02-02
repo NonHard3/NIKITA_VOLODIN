@@ -57,7 +57,6 @@ library = {
     '451 градус по Фаренгейту': {'author': 'Рэй Брэдбери', 'year': 2005, 'is_availability': True},
     'Оно': {'author': 'Стивен Кинг', 'year': 1990, 'is_availability': False},
 }
-library_1 = {}
 
 book_list_view(library)
 
