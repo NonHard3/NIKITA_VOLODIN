@@ -60,8 +60,8 @@ library = {
 
 book_list_view(library)
 
-add_book("123", "Lincoln", 1955)
-add_book("Мартин Иден", "Lincoln", 1955)
+add_book("Мгла", "Стивен Кинг", 2001)
+add_book("Мартин Иден", "Jack London", 1955)
 add_book(input("\nВведите название книги: "), input("Введите автора: "), input_year("Введите год издания: "))
 
 book_list_view(library)
