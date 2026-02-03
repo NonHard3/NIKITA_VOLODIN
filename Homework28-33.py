@@ -77,6 +77,17 @@ def return_book(dict_library, title):
         print(f"\nКнига '{title}' возвращена в библиотеку")
 
 
+def find_book(dict_library, title):
+    if title not in dict_library:
+        print(f"\nОшибка. Такой книги нет в библиотеке")
+    else:
+        print(
+            f"""\nНазвание книги: {title}
+Автор: {dict_library[title]['author']}
+Год издания: {dict_library[title]['year']}"""
+        )
+
+
 library = {
     'Скотный двор': {'author': 'Джордж Оруэлл', 'year': 2001, 'is_availability': False},
     '1984': {'author': 'Джордж Оруэлл', 'year': 1995, 'is_availability': True},
@@ -87,10 +98,6 @@ library = {
 
 book_list_view(library)
 
-issue_book(library, '1984')
-issue_book(library, 'Скотный двор')
-issue_book(library, 'Скотный')
-
-return_book(library, 'Оно')
-return_book(library, 'Мартин Иден')
-return_book(library, 'Мартин')
+find_book(library, '1984')
+find_book(library, 'Скотный двор')
+find_book(library, 'Скотный')
