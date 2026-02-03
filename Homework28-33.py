@@ -80,12 +80,44 @@ def return_book(dict_library, title):
 def find_book(dict_library, title):
     if title not in dict_library:
         print(f"\nОшибка. Такой книги нет в библиотеке")
+        return
     else:
         print(
             f"""\nНазвание книги: {title}
 Автор: {dict_library[title]['author']}
 Год издания: {dict_library[title]['year']}"""
         )
+    if dict_library[title]['is_availability'] is None:
+        print("Книга в библиотеке, но ее статус не определен")
+    elif not dict_library[title]['is_availability']:
+        print("Наличие: Книга выдана")
+    else:
+        print("Наличие: Книга доступна")
+
+
+def user_menu(dict_library):
+    dict_menu = {
+        '1': ["Отобразить список книг", lambda: book_list_view(dict_library)],
+        '2': ["Получить информацию о книге", lambda: find_book(dict_library, input("\nВведите название книги: "))],
+        '3': ["Добавить/Обновить книгу",
+              lambda: add_book(dict_library, input("\nВведите название книги: "), input("Введите автора: "),
+                               input_year("Введите год издания: "))],
+        '4': ["Удалить книгу", lambda: remove_book(dict_library, input("\nВведите название книги: "))],
+        '5': ["Выдать книгу", lambda: issue_book(dict_library, input("\nВведите название книги: "))],
+        '6': ["Вернуть книгу", lambda: return_book(dict_library, input("\nВведите название книги: "))],
+        '7': ["Завершить работу", ]
+    }
+    while True:
+        print("\nСписок команд: ")
+        for key, value in dict_menu.items():
+            print(f"{key}.{value[0]}")
+        input_user = input("\nВаш выбор: ")
+        if input_user in dict_menu and input_user != "7":
+            dict_menu[input_user][1]()
+        elif input_user == "7":
+            break
+        else:
+            print("\nНеверная команда")
 
 
 library = {
@@ -96,8 +128,4 @@ library = {
     'Оно': {'author': 'Стивен Кинг', 'year': 1990, 'is_availability': False},
 }
 
-book_list_view(library)
-
-find_book(library, '1984')
-find_book(library, 'Скотный двор')
-find_book(library, 'Скотный')
+user_menu(library)
