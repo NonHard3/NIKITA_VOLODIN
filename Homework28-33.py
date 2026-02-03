@@ -48,12 +48,37 @@ def add_book(dict_library, title, author, year):
         else:
             return
 
+
 def remove_book(dict_library, title):
     if title in dict_library:
         del dict_library[title]
         print(f"\nКнига '{title}' удалена из библиотеки")
     else:
         print(f"\nКнига '{title}' не найдена в библиотеке")
+
+
+def issue_book(dict_library, title):
+    if title not in dict_library:
+        print(f"\nОшибка. Такой книги нет в библиотеке")
+        return
+    else:
+        if not dict_library[title]['is_availability']:
+            print(f"\nОшибка. Книга '{title}' уже выдана")
+        else:
+            dict_library[title]['is_availability'] = False
+            print(f"\nКнига '{title}' выдана читателю")
+
+
+def return_book(dict_library, title):
+    if title not in dict_library:
+        print(f"\nОшибка. Такой книги нет в библиотеке")
+        return
+    else:
+        if dict_library[title]['is_availability']:
+            print(f"\nОшибка. Книга '{title}' уже в библиотеке")
+        else:
+            dict_library[title]['is_availability'] = True
+            print(f"\nКнига '{title}' возвращена в библиотеку")
 
 
 library = {
@@ -66,8 +91,11 @@ library = {
 
 book_list_view(library)
 
-remove_book(library, "Скотный двор")
-remove_book(library, "Скотный двор")
 
-book_list_view(library)
+issue_book(library, '1984')
+issue_book(library, 'Скотный двор')
+issue_book(library, 'Скотный')
 
+return_book(library,'Оно')
+return_book(library,'Мартин Иден')
+return_book(library,'Мартин')
