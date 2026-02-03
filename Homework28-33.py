@@ -60,25 +60,21 @@ def remove_book(dict_library, title):
 def issue_book(dict_library, title):
     if title not in dict_library:
         print(f"\nОшибка. Такой книги нет в библиотеке")
-        return
+    elif not dict_library[title]['is_availability']:
+        print(f"\nОшибка. Книга '{title}' уже выдана")
     else:
-        if not dict_library[title]['is_availability']:
-            print(f"\nОшибка. Книга '{title}' уже выдана")
-        else:
-            dict_library[title]['is_availability'] = False
-            print(f"\nКнига '{title}' выдана читателю")
+        dict_library[title]['is_availability'] = False
+        print(f"\nКнига '{title}' выдана читателю")
 
 
 def return_book(dict_library, title):
     if title not in dict_library:
         print(f"\nОшибка. Такой книги нет в библиотеке")
-        return
+    elif dict_library[title]['is_availability']:
+        print(f"\nОшибка. Книга '{title}' уже в библиотеке")
     else:
-        if dict_library[title]['is_availability']:
-            print(f"\nОшибка. Книга '{title}' уже в библиотеке")
-        else:
-            dict_library[title]['is_availability'] = True
-            print(f"\nКнига '{title}' возвращена в библиотеку")
+        dict_library[title]['is_availability'] = True
+        print(f"\nКнига '{title}' возвращена в библиотеку")
 
 
 library = {
@@ -91,11 +87,10 @@ library = {
 
 book_list_view(library)
 
-
 issue_book(library, '1984')
 issue_book(library, 'Скотный двор')
 issue_book(library, 'Скотный')
 
-return_book(library,'Оно')
-return_book(library,'Мартин Иден')
-return_book(library,'Мартин')
+return_book(library, 'Оно')
+return_book(library, 'Мартин Иден')
+return_book(library, 'Мартин')
