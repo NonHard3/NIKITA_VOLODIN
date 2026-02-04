@@ -97,15 +97,15 @@ def find_book(dict_library, title):
 
 def user_menu(dict_library):
     dict_menu = {
-        '1': ["Отобразить список книг", lambda: book_list_view(dict_library)],
-        '2': ["Получить информацию о книге", lambda: find_book(dict_library, input("\nВведите название книги: "))],
-        '3': ["Добавить/Обновить книгу",
+        '1': ("Отобразить список книг", lambda: book_list_view(dict_library)),
+        '2': ("Получить информацию о книге", lambda: find_book(dict_library, input("\nВведите название книги: "))),
+        '3': ("Добавить/Обновить книгу",
               lambda: add_book(dict_library, input("\nВведите название книги: "), input("Введите автора: "),
-                               input_year("Введите год издания: "))],
-        '4': ["Удалить книгу", lambda: remove_book(dict_library, input("\nВведите название книги: "))],
-        '5': ["Выдать книгу", lambda: issue_book(dict_library, input("\nВведите название книги: "))],
-        '6': ["Вернуть книгу", lambda: return_book(dict_library, input("\nВведите название книги: "))],
-        '7': ["Завершить работу", ]
+                               input_year("Введите год издания: "))),
+        '4': ("Удалить книгу", lambda: remove_book(dict_library, input("\nВведите название книги: "))),
+        '5': ("Выдать книгу", lambda: issue_book(dict_library, input("\nВведите название книги: "))),
+        '6': ("Вернуть книгу", lambda: return_book(dict_library, input("\nВведите название книги: "))),
+        '7': ("Завершить работу", )
     }
     while True:
         print("\nСписок команд: ")
@@ -113,7 +113,7 @@ def user_menu(dict_library):
             print(f"{key}.{value[0]}")
         input_user = input("\nВаш выбор: ")
         if input_user in dict_menu and input_user != "7":
-            dict_menu[input_user][1]()
+            dict_menu[input_user][1]
         elif input_user == "7":
             break
         else:
